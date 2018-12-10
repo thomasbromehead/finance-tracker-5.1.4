@@ -9,7 +9,8 @@
         <%= text_field_tag :stock, params[:stock], placeholder: "Stock Ticker symbol", autofocus: true, class: "form-control searchbox input-lg" %>
         <div id="results">
          <%= render 'users/result' %>
-        </div>      
+        </div>   
+        <%= render 'stocks/list' %>   
       </div>
 
  
