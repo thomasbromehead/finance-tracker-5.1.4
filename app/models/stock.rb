@@ -3,6 +3,7 @@ class Stock < ApplicationRecord
   has_many :users, through: :user_stocks
   
   def self.find_by_ticker(ticker_symbol)
+    #Class method so we can write where directly => equivalent to Stock.where
     where(ticker: ticker_symbol).first
   end
   
