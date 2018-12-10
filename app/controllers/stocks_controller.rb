@@ -4,7 +4,10 @@ class StocksController < ApplicationController
     if params[:stock].present?
       @stock = Stock.new_from_lookup(params[:stock])
       if @stock
-        render 'users/my_portfolio'
+        respond_to do |format|
+          format.js { render partial: "users/result"}
+          format.html { render 'users/my_portfolio'}
+        end
       else
         flash[:danger] = "You've entered an incorrect symbol"
         render 'users/my_portfolio'
