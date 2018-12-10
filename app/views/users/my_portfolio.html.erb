@@ -8,7 +8,7 @@
       <div class="col-md-10">
         <%= text_field_tag :stock, params[:stock], placeholder: "Stock Ticker symbol", autofocus: true, class: "form-control searchbox input-lg" %>
         <div id="results">
-         <%= render 'users/result' %>
+         <%= render partial: 'stocks/result' %>
         </div>   
         <%= render 'stocks/list' %>   
       </div>

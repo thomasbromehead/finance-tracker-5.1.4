@@ -1,0 +1,21 @@
+<h1>My friends</h1>
+<h3>Search for friends</h3>
+
+<div id="stock-lookup">
+  <%= form_tag search_friends_path,  method: :get, id: "friend-lookup-form" do %>
+    <div class="form-group row no-padding text-center col-md-12">
+      <div class="col-md-10">
+        <%= text_field_tag :friend_name, params[:friend_name], placeholder: "Enter a friend's name or email", autofocus: true, class: "form-control searchbox input-lg" %>
+      </div>
+
+ 
+      <div class="col-md-2">
+        <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+          <i class="fa fa-search"></i> Look up a friend
+        <% end %>
+        
+      </div>
+    </div>
+  <% end %>
+  
+</div>

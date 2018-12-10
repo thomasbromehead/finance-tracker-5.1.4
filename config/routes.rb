@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :friendships, only: [:destroy]
+  get 'search_friends', to: 'users#search'
 
 
 end

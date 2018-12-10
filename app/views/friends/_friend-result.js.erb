@@ -1,0 +1,5 @@
+friendresultsHolder = document.getElementById('friend-results')
+console.log(friendresultsHolder)
+console.log(friendresultsHolder.innerHTML)
+friendresultsHolder.innerHTML = "<%= j render 'friends/friend-result.html' %>"
+console.log(friendresultsHolder.innerHTML)

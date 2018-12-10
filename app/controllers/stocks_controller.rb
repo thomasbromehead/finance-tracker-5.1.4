@@ -9,7 +9,7 @@ class StocksController < ApplicationController
     end
 
     respond_to do |format|
-      format.js { render partial: "users/result" }
+      format.js { render partial: "stocks/result" }
       format.html { render 'users/my_portfolio' }
     end    
 

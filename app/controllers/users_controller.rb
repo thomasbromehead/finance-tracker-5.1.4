@@ -6,8 +6,25 @@ class UsersController < ApplicationController
   end
 
   def my_friends
-    @friendships = current_user.friends
+    @friendships = current_user.friends unless current_user.friends.empty?
   end
+
+
+  def search
+    @friendships = current_user.friends unless current_user.friends.empty?
+    if params[:friend_name].blank?
+      flash.now[:danger] = "You didn't search for anyone"
+    else
+      @users = User.search(params[:friend_name])
+      @users = current_user.except_current_user(@users)
+    end
+
+
+    respond_to do |format|
+      format.js { render partial: 'friends/friend-result' }
+      format.html { render 'users/my_friends'}
+    end
+  end  
   
   
 end
