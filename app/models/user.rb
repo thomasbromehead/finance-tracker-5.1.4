@@ -63,4 +63,10 @@ class User < ApplicationRecord
     #Reject method, reject user from users array
     users.reject{ |user| user.id == self.id }
   end
+
+  #Search for the friend so that we don't display an "Add as friend" button if the two are already friends
+  def friends_with?(user)
+    friendships.where(friend_id: user.id).present?
+  end
+
 end
