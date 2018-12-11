@@ -13,16 +13,9 @@ class FriendshipsController < ApplicationController
 
 
   def destroy
-    tracking = current_user.friendships.find(params[:id])
-    if tracking.destroy
-      flash[:danger] = "You've removed this friend"
-    else
-      flash[:danger] = "Unable to delete this friend"
-    end
-    respond_to do |format| 
-      format.html { render 'users/my_friends'}
-      format.js { render partial: 'friends/friend-list'}
-    end
+    @tracking = current_user.friendships.find(params[:id])
+    @tracking.destroy
+    #if remote is true on the link Rails will look for a destroy.js.erb in a friendships view folder
   end
 
 end

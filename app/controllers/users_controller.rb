@@ -23,6 +23,11 @@ class UsersController < ApplicationController
       format.html { render 'users/my_friends'}
     end
   end  
+
+  def show
+    @user = User.find(params[:id])
+    @user_stocks = @user.stocks
+  end
   
   
 end

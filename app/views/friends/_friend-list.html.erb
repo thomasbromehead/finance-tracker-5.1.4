@@ -1,12 +1,14 @@
 <% @friendships.each do |friend| %>
-  <tr>
+  <tr data-id="<%= current_user.friendships.find_by_friend_id(friend.id).id %>">
     <td><%= friend.full_name %></td>
     <td><%= friend.email %></td>
     <td>
       <%= link_to "View Profile", user_path(friend), class: "btn btn-primary btn-xs" %>
       <% if current_user.friends_with?(friend) %>
-          <%= link_to 'Remove friend', friendship_path(current_user.friendships.find_by_friend_id(friend.id)), method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: "btn btn-xs btn-danger remove-friend" %>
+          <%= link_to 'Remove friend', friendship_path(current_user.friendships.find_by_friend_id(friend.id)), method: :delete, remote: true, data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger remove-friend"%>
       <% end %>
     </td>
   </tr>
 <% end %> 
+
+<%= console %>

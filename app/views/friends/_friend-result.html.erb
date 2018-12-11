@@ -9,11 +9,11 @@
             <td><strong>Name: </strong> <%= user.full_name %></td>
             <td><strong>Email: </strong><%= user.email %></td>
             <td><strong>Profile: </strong>
-            <%= link_to "View Profile", "#", class:"btn btn-xs btn-success" %>
+            <%= link_to "View Profile", user_path(user), class:"btn btn-xs btn-success" %>
               <% if !current_user.friends_with?(user) %>
                 <%= link_to "Add as friend", friendships_path(friend: user, user: current_user), method: :post, class:"btn btn-xs btn-primary" %> 
               <% else %>
-                <%= link_to "Stop tracking", friendship_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger"  %>          
+                <%= link_to 'Remove friend', friendship_path(current_user.friendships.find_by_friend_id(user.id)), method: :delete, remote: true, data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger remove-friend"%>
               <% end %>
             </td>
           </tr>

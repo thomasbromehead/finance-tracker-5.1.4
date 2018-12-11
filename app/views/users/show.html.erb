@@ -1,0 +1,19 @@
+<h2>User details</h2>
+
+<dl>
+  <dt><strong>Full Name</strong></dt>
+  <dd><%= @user.first_name %></dd>
+  <dt><strong>Email</strong></dt>
+  <dd><%= @user.email %></dd>
+</dl>
+
+
+
+<% if @user.stocks.size > 0 %>
+  <%= render 'stocks/list' %>
+<% else %>
+  <p class="lead">
+    This user's not tracking any stocks
+  </p>
+<% end %>
+
